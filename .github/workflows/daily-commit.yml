@@ -3,8 +3,11 @@ name: Daily Empty Commit
 on:
   schedule:
     # Runs every day at a specific time (e.g., 5:30 UTC)
-    - cron: '30 5 * * *'
+    - cron: '00 6 * * *'
   workflow_dispatch: # Allows manual triggering from the Actions tab
+
+permissions:
+  contents: write 
 
 jobs:
   daily_commit:
@@ -22,3 +25,5 @@ jobs:
         run: |
           git commit --allow-empty -m "Automated daily commit to track activity-A part of FOSSEE sysadmin internship task"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
