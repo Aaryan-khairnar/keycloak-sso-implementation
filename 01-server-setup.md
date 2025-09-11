@@ -78,6 +78,10 @@ sudo firewall-cmd --reload
 
 Firewall reloaded  
 Then we recheck which services have been allowed
+```bash
+sudo firewall-cmd --list-all
+# lists all firewall services which are allowed
+```
 
 ![12](./images/1/12.jpg)  
 
@@ -92,26 +96,11 @@ sudo dnf update -y
 ```
 ![13](./images/1/13.jpg)
 
-```
-## Install EPEL and Remi repositories for up-to-date packages
+```bash
+## I Ran the following command as directed
 sudo dnf install epel-release -y
-```
-
-![14](./images/1/14.jpg)
-
-```
 sudo dnf install https://rpms.remirepo.net/enterprise/remi-release-10.rpm -y
-```
-
-![15](./images/1/15.jpg)
-
-```
 sudo dnf module enable php:remi-8.3 -y
-```
-
-![16](./images/1/16.jpg)
-
-```
 sudo dnf install httpd php php-cli php-mysqlnd php-gd php-xml php-mbstring php-json php-fpm mariadb-server python3 python3-pip unzip wget -y
 ```
 ![17](./images/1/17.jpg)
