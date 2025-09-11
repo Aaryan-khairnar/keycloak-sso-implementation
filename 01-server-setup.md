@@ -1,12 +1,12 @@
 # Task 1: Initial Server setup
 
 ## Table of Contents
-- [Previous Steps](#previous-steps)
-- [Creating New User](#creating-new-user-and-removing-root-login-access)
-- [Disabling Root SSH](#disabling-root-user-ssh-for-better-security)
-- [Configuring Firewall](#configuring-firewall)
-- [Updating System](#updating-system-and-installing-core-components)
-- [Enabling Core Services](#enabling-core-services)
+- [Previous Steps](#1-previous-steps)
+- [Creating New User](#2-creating-new-user-and-removing-root-login-access)
+- [Disabling Root SSH](#3-disabling-root-user-ssh-for-better-security)
+- [Configuring Firewall](#4-configuring-firewall)
+- [Updating System](#5-updating-system-and-installing-core-components)
+- [Enabling Core Services](#6-enabling-core-services)
 
 
 ---
