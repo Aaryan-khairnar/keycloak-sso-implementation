@@ -10,15 +10,12 @@
 
 
 ---
-### Previous steps:
+## 1. Previous steps
 
 - Logged in to Digital Ocean control panel.
 - Created droplet.
 - Operating System: Rocky Linux 10.
 - IPv6 enabled along with IPv4.  
-
-![1](./images/1/1.jpg)
-
 - Added SSH key. 
 - Finalize: Set hostname and Created Droplet.  
 
@@ -30,7 +27,7 @@ I can log in as root user
 ![3](./images/1/3.jpg)  
 
 ---
-### Creating new user and removing root login access
+## 2. Creating new user and removing root login access
 
 ``` bash
 # Created a new user and set a strong password
@@ -47,7 +44,7 @@ rsync --archive --chown=rlsso:rlsso ~/.ssh /home/rlssso
 ![4](./images/1/4.jpg)
 ---
 
-### Disabling root user SSH for better security
+## 3. Disabling root user SSH for better security
 ```
 Edit /etc/ssh/sshd_config and change  
 PermitRootLogin yes to PermitRootLogin no
@@ -59,7 +56,7 @@ Once we restart sshd service, we can no longer login as root user
 
 ---  
   
-### Configuring Firewall
+## 4. Configuring Firewall
 
 ```bash
 # Enable and start the firewall
@@ -89,7 +86,7 @@ We have all firewall services set up correctly.
 
 ---
 
-### Updating system and installing core components
+## 5. Updating system and installing core components
 ```
 # Update all system packages
 sudo dnf update -y
@@ -106,7 +103,7 @@ sudo dnf install httpd php php-cli php-mysqlnd php-gd php-xml php-mbstring php-j
 ![17](./images/1/17.jpg)
 ---
 
-### Enabling core services
+## 6. Enabling core services
 ```
 sudo systemctl enable --now httpd
 sudo systemctl enable --now php-fpm
