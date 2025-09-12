@@ -16,9 +16,9 @@ sudo dnf install java-21-openjdk java-21-openjdk-devel -y
 ![1.5](./images/2/1.5.jpg)
 
 ```bash
-sudo wget https://github.com/keycloak/keycloak/releases/download/26.3.3/keycloak-24.3.3.zip
-sudo unzip keycloak-24.0.4.zip
-sudo mv keycloak-24.0.4 keycloak
+sudo wget https://github.com/keycloak/keycloak/releases/download/26.3.3/keycloak-26.3.3.zip
+sudo unzip keycloak-26.3.3.zip
+sudo mv keycloak-26.3.3 keycloak
 ```
 
 ![2](./images/2/2.png)
@@ -59,6 +59,7 @@ sudo --preserve-env=P ./bin/kc.sh bootstrap-admin user --username admin --passwo
 ```
 ![6](./images/2/6.png)
 We have now created the initial bootstrap user
+
 ---
 
 ## 2. Running Keycloak
