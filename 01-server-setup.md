@@ -53,11 +53,8 @@ PermitRootLogin yes to PermitRootLogin no
 Once we restart sshd service, we can no longer login as root user
 
 ![8](./images/1/8.jpg)
-
 ---  
-  
 ## 4. Configuring Firewall
-
 ```bash
 # Enable and start the firewall
 sudo systemctl enable --now firewalld
@@ -72,17 +69,15 @@ sudo firewall-cmd --permanent --add-service=ssh
 sudo firewall-cmd --reload
 ```
 ![11](./images/1/11.jpg)  
-
 Firewall reloaded  
 Then we recheck which services have been allowed
 ```bash
 sudo firewall-cmd --list-all
 # lists all firewall services which are allowed
 ```
-
 ![12](./images/1/12.jpg)  
 
-We have all firewall services set up correctly.
+{We have all firewall services set up correctly.} 
 
 ---
 
@@ -92,7 +87,6 @@ We have all firewall services set up correctly.
 sudo dnf update -y
 ```
 ![13](./images/1/13.jpg)
-
 ```bash
 ## I Ran the following command as directed
 sudo dnf install epel-release -y
@@ -102,7 +96,6 @@ sudo dnf install httpd php php-cli php-mysqlnd php-gd php-xml php-mbstring php-j
 ```
 ![17](./images/1/17.jpg)
 ---
-
 ## 6. Enabling core services
 ```
 sudo systemctl enable --now httpd
