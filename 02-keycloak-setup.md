@@ -1,4 +1,4 @@
-# Task 1: Keycloak Setup (Dev mode)
+# Task: Keycloak Setup (Dev mode)
 ---
 ## Table of Contents
 - [Adding Bootstrap User](#1-adding-bootstrap-user)
@@ -59,6 +59,7 @@ sudo --preserve-env=P ./bin/kc.sh bootstrap-admin user --username admin --passwo
 ```
 ![6](./images/2/6.png)
 We have now created the initial bootstrap user
+---
 
 ## 2. Running Keycloak
 

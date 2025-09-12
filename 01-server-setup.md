@@ -1,4 +1,4 @@
-# Task 1: Initial Server setup
+# Task: Initial Server setup
 
 ## Table of Contents
 - [Previous Steps](#1-previous-steps)
