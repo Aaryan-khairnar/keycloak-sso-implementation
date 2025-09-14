@@ -8,10 +8,10 @@
 
 | Application | URL | Key Technologies |
 | :--- | :--- | :--- |
-| **Keycloak** | `https://139.59.20.222/admin` | Java, Apache (Reverse Proxy) |
-| **Drupal** | `http://139.59.20.222/drupal/` | PHP, Composer, MariaDB |
-| **Django** | `http://139.59.20.222/django/` | Python, Django, Gunicorn |
-| **PHP App** | `http://139.59.20.222/php/` | PHP, Composer |
+| **Keycloak** | https://139.59.20.222/admin | Java, Apache (Reverse Proxy) |
+| **Drupal** | http://139.59.20.222/drupal/ | PHP, Composer, MariaDB |
+| **Django** | http://139.59.20.222/django/ | Python, Django, Gunicorn |
+| **PHP App** | http://139.59.20.222/php/ | PHP, Composer |
 
 ## Overview
 
