@@ -5,6 +5,8 @@
 - [Integrating with Keycloak SSO](#2-integrating-with-keycloak-sso)
 - [Performing SSO with Keycloak](#3-performing-sso-with-keycloak)
 
+DJANGO APPLICATION: http://139.59.20.222/django/
+
 ---
 
 ## 1. Django Installation
@@ -75,11 +77,11 @@ Next we create superuser in our venv
 
 ![5](./images/4/5.png)
 
-We edit /etc/systemd/system/gunicorn.service
+edit /etc/systemd/system/gunicorn.service
 
 ![6](./images/4/6.png)
 
-We also edit 
+Next Edit:
 
 1. Urls.py
 
@@ -111,22 +113,22 @@ user_info = {
 return render(request, 'home.html', {'user_info': user_info})
 ```
 
-Next we edit /etc/httpd/conf.d/applications.conf
+Next edit /etc/httpd/conf.d/applications.conf
 
 ![applications-conf](./images/4/applications-conf.png)
 
-We make a templates directory and code out a home and a login HTML page
+Make a templates directory and code out a home and a login HTML page
 
 ![8.1](./images/4/8.1.png)
 
-We collect static files
-We run
+To Collect static files
+Run
 ```bash
 python manage.py collectstatic
 ```
 This collects all the static files in our project so they can load faster
 
-We then enable and run gunicorm service
+Enable and run gunicorm service
 
 ![7](./images/4/7.png)
 
@@ -139,16 +141,16 @@ Create a new user
 
 ![9](./images/4/9.png)
 
-We copy client secret key and paste it in settings.py file
+Copy client secret key and paste it in settings.py file
 ```python
 OIDC_RP_CLIENT_SECRET = "client_secret"
 ```
 
-Next we put a valid redirect url and create user
+Next put a valid redirect url and create user
 
 ![10](./images/4/10.png)
 
-We Restart gunicorn service and change ownership to apache user
+Restart gunicorn service and change ownership to apache user
 
 ![11](./images/4/11.png)
 
@@ -156,7 +158,7 @@ We Restart gunicorn service and change ownership to apache user
 
 ## 3. Performing SSO with Keycloak
 
-We go to to our login page http://139.59.20.222/django
+Go to to Django app http://139.59.20.222/django/
 
 ![12](./images/4/12.png)
 

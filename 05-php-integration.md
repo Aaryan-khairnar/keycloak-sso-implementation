@@ -5,7 +5,7 @@
 - [Integrating with Keycloak SSO](#2-integrating-with-keycloak-sso)
 - [Performing SSO with Keycloak](#3-performing-sso-with-keycloak)
 
-PHP APPLICATION: http://139.59.20.222/php/
+PHP APPLICATION: http://139.59.20.222/php/ 
 
 ---
 ## 1. PHP Installation
@@ -106,8 +106,7 @@ $oidc = new OpenIDConnectClient(
 
 ## 3. Performing SSO with Keycloak
 
-Go to keycloak application
-http://139.59.20.222/php/
+Go to PHP application http://139.59.20.222/php/
 
 - Click login
 

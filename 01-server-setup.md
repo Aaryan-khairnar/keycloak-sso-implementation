@@ -8,6 +8,7 @@
 - [Updating System](#5-updating-system-and-installing-core-components)
 - [Enabling Core Services](#6-enabling-core-services)
 
+SERVER IP ADDRESS: 139.59.20.222
 
 ---
 ## 1. Previous steps
@@ -27,6 +28,7 @@ I can log in as root user
 ![3](./images/1/3.jpg)  
 
 ---
+
 ## 2. Creating new user and removing root login access
 
 ``` bash
@@ -42,6 +44,7 @@ rsync --archive --chown=rlsso:rlsso ~/.ssh /home/rlssso
 ```
 
 ![4](./images/1/4.jpg)
+
 ---
 
 ## 3. Disabling root user SSH for better security
@@ -50,10 +53,13 @@ Edit /etc/ssh/sshd_config and change
 PermitRootLogin yes to PermitRootLogin no
 ```
 ![6](./images/1/6.jpg)  
-Once we restart sshd service, we can no longer login as root user
+
+Restart sshd service, we can no longer login as root user
 
 ![8](./images/1/8.jpg)
+
 ---  
+
 ## 4. Configuring Firewall
 ```bash
 # Enable and start the firewall

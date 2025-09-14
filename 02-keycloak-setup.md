@@ -3,11 +3,15 @@
 ## Table of Contents
 - [Adding Bootstrap User](#1-adding-bootstrap-user)
 - [Running Keycloak](#2-running-keycloak)
+
+This is only for Dev Mode, production Mode is in the next markdown file. 
+
 ---
 
 ## 1. Adding Bootstrap User
 
-We Download Java and Keycloak
+Download Java and Keycloak  
+
 The task specified java-17-openjdk-devel, but since Rocky Linux 10  repos no longer provide Java 17, I installed java-21-openjdk and  java-21-openjdk-devel, which are the latest supported packages.
 
 ```bash
@@ -57,16 +61,17 @@ sudo --preserve-env=P ./bin/kc.sh bootstrap-admin user --username admin --passwo
 # Creates the first Keycloak admin account ("bootstrap admin") using the password from $P.
 # --preserve-env=P makes sure sudo does not strip the P variable.
 ```
-![6](./images/2/6.png)
 We have now created the initial bootstrap user
+
+![6](./images/2/6.png)
 
 ---
 
 ## 2. Running Keycloak
 
-Here we delete bootstrap user and creating a new admin user  
+Delete bootstrap user and creating a new admin user  
 
-We run as per the instructions:
+Run as per the instructions:
 ```bash
 sudo -u keycloak /opt/keycloak/bin/kc.sh start-dev --http-port=8080 --http-host=0.0.0.0  
 ```
@@ -78,13 +83,13 @@ Upon inspecting errors we can see that it says
 starting the server failed, the problem was that the database is read only
 ReadOnlyFileSystemException
 ```
-upon checking keycloak directory we see
+Upon checking keycloak directory we see
 ```bash
 drwxr-xr-x. 4 root     root        40 Sep 10 20:02 data
 ```
-data folder is owned by root and not keycloak  
+Data folder is owned by root and not keycloak  
 
-Hence we change ownership by chown and chmod
+Change ownership by chown and chmod
 
 ![8](./images/2/8.png)
 
@@ -111,6 +116,7 @@ sudo -u keycloak ./bin/kc.sh start-dev --https-port=8443  --https-certificate-fi
 # Listen to requests from all addresses by using host=0.0.0.0
 ```
 ![11](./images/2/11.png)
+
 Once we run the command we can access Keycloak Administrator Console  
 On https://139.59.20.222:8443/  
 (Does not work now as keycloak is set from dev to production mode)
