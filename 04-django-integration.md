@@ -18,17 +18,39 @@
 Editing the settings python file
 
 ```python
-# Database                                                                                                                            #https://docs.djangoproject.com/en/5.2/ref/settings/#databases                                                                                                                                                                                                     
-DATABASES = {                                                                                                                              'default': {                                                                                                                               'ENGINE': 'django.db.backends.mysql',                                                                                                  'NAME': 'djangodb',                                                                                                                    'USER': 'djangouser',                                                                                                                  'PASSWORD': 'your_passoword',                                                                                                               'HOST': 'localhost',                                                                                                                   'PORT': '3306',                                                                                                                    }                                                                                                                                  }
+# Database
+#https://docs.djangoproject.com/en/5.2/ref/settings/ 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangodb',
+        'USER': 'djangouser',
+        'PASSWORD': 'your_passoword',
+        'HOST': 'localhost',
+        'PORT':'3306',
+        }
+    }
 ```
 
 ```python
-TEMPLATES = [                                                                                                                              {                                                                                                                                          'BACKEND': 'django.template.backends.django.DjangoTemplates',                                                                          'DIRS': [BASE_DIR / 'templates'],                                                                                                      'APP_DIRS': True,                                                                                                                      'OPTIONS': {                                                                                                                               'context_processors': [                                                                                                                    'django.template.context_processors.request',                                                                                          'django.contrib.auth.context_processors.auth',                                                                                         'django.contrib.messages.context_processors.messages',                                                                             ],                                                                                                                                 },
-},
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                ],
+            },
+    },
 ]                                                                                                                                 
 ```
 ```python
-STATIC_URL = '/django/static/'                                                                                                         STATIC_ROOT = BASE_DIR / 'static'
+STATIC_URL = '/django/static/'
+STATIC_ROOT = BASE_DIR / 'static'
 ```
 ```python
 AUTHENTICATION_BACKENDS = (
@@ -62,7 +84,15 @@ We also edit
 1. Urls.py
 
 ```python
-from django.contrib import admin                                                                                                       from .views import login_page, home_page                                                                                               from django.urls import path, include                                                                                                                                                                                                                                         urlpatterns = [                                                                                                                            path('admin/', admin.site.urls),                                                                                                       path('oidc/', include('mozilla_django_oidc.urls')),                                                                                    path('', login_page, name='login'),                                                                                                    path('home/', home_page, name='home')                                                                                              ] 
+from django.contrib import admin
+from .views import login_page, home_page
+from django.urls import path, include
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('oidc/', include('mozilla_django_oidc.urls')),
+    path('', login_page, name='login'),
+    path('home/', home_page, name='home')
+    ] 
 ```
 
 2. views.py
@@ -70,10 +100,14 @@ from django.contrib import admin                                                
 ```python
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-def login_page(request):return render(request, 'login.html')                                                      @login_required                                                                                                                        def home_page(request):                         
-#After a successful OIDC login, user details are in request.user                                                                 
+def login_page(request):return render(request, 'login.html')@login_required
+def home_page(request):                         
+#After a successful OIDC login, user details are in request.user
 user_info = {
-'last_name': request.user.last_name,                                                             'email': request.user.email,                                                                                                           'username': request.user.username,} # You can render a template or just return a simple response                                                             
+'last_name': request.user.last_name,
+'email': request.user.email,
+'username': request.user.username,} 
+# You can render a template or just return a simple response                                                             
 return render(request, 'home.html', {'user_info': user_info})
 ```
 
