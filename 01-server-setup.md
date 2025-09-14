@@ -22,8 +22,8 @@ SERVER IP ADDRESS: 139.59.20.222
 
 ---  
 
-[Confirmation]: Can access rocky linux through command line    
-I can log in as root user  
+- [Confirmation]: Can access rocky linux through command line    
+- I can log in as root user  
 
 ![3](./images/1/3.jpg)  
 
@@ -32,15 +32,13 @@ I can log in as root user
 ## 2. Creating new user and removing root login access
 
 ``` bash
-# Created a new user and set a strong password
 adduser rlsso
 passwd ----
 
-# Add the user to the 'wheel' group to grant sudo access
 usermod -aG wheel rlsso
-
+# Add the user to the 'wheel' group to grant sudo access
+rsync --archive --chown=rlsso:rlsso ~/.ssh /home/rlsso
 # Copy SSH key so new user can login with ssh
-rsync --archive --chown=rlsso:rlsso ~/.ssh /home/rlssso
 ```
 
 ![4](./images/1/4.jpg)
@@ -48,51 +46,49 @@ rsync --archive --chown=rlsso:rlsso ~/.ssh /home/rlssso
 ---
 
 ## 3. Disabling root user SSH for better security
-```
-Edit /etc/ssh/sshd_config and change  
-PermitRootLogin yes to PermitRootLogin no
-```
+
+- Edit /etc/ssh/sshd_config and change  
+- PermitRootLogin yes to PermitRootLogin no
+
 ![6](./images/1/6.jpg)  
 
-Restart sshd service, we can no longer login as root user
+- Restart sshd service, we can no longer login as root user
 
 ![8](./images/1/8.jpg)
 
 ---  
 
 ## 4. Configuring Firewall
+- Enable and start the firewall
+- Allow essential services permanently
 ```bash
-# Enable and start the firewall
 sudo systemctl enable --now firewalld
-
-# Allow essential services permanently
 sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --permanent --add-service=https
-sudo firewall-cmd --permanent --add-port=8080/tcp # For Keycloak
+sudo firewall-cmd --permanent --add-port=8080/tcp 
 sudo firewall-cmd --permanent --add-service=ssh
 
 # Apply the new rules
 sudo firewall-cmd --reload
 ```
 ![11](./images/1/11.jpg)  
-Firewall reloaded  
-Then we recheck which services have been allowed
+- Firewall reloaded  
+- Then we recheck which services have been allowed
 ```bash
 sudo firewall-cmd --list-all
 # lists all firewall services which are allowed
 ```
 ![12](./images/1/12.jpg)  
 
-{We have all firewall services set up correctly.} 
-
 ---
 
 ## 5. Updating system and installing core components
-```
-# Update all system packages
+- Update all system packages
+```bash
 sudo dnf update -y
 ```
 ![13](./images/1/13.jpg)
+- Installing packages
 ```bash
 ## I Ran the following command as directed
 sudo dnf install epel-release -y

@@ -10,15 +10,15 @@ DRUPAL APPLICATION: http://139.59.20.222/drupal/user/login/
 ---
 
 ## 1. Drupal Installation
-First install composer
+- First install composer
 ```bash
 sudo dnf install composer -y 
 ```
-Then create Drupal Database in mariadb
+- Then create Drupal Database in mariadb
 
 ![1](./images/3/1.png)
 
-Create composer project in var/www
+- Create composer project in var/www
 ```bash
 cd /var/www/
 # Go to /var/www directory
@@ -30,6 +30,8 @@ sudo chmod -R 755 /var/www/drupal/web
 ```
 ![2](./images/3/2.png)
 
+- Install packages
+- Copy default settings.php to our directory
 ```bash
 sudo dnf install policycoreutils-python-utils -y
 sudo mkdir /var/www/drupal/web/sites/default/files 
@@ -40,30 +42,26 @@ sudo cp /var/www/drupal/web/sites/default/default.settings.php /var/www/drupal/w
 ```
 ![3](./images/3/3.png)
 
+- Edit new settins file
 ```bash
 sudo nano /var/www/drupal/web/sites/default/settings.php
-# edit the new settings.php to add your server's IP as a trusted host
 ```
-Inside Drupal default settings add the following lines
-
-Add our machines ip address as a trusted host:
+- Inside Drupal default settings add the following lines
+- Add our machines ip address as a trusted host:
 
 ![4](./images/3/4.png)
 
-Allow HTTP client to connect to a server with a self-signed SSL certificate:
+- Allow HTTP client to connect to a server with a self-signed SSL certificate:
 
 ![5](./images/3/5.png)
 
-Then set SELinux contexts
+- Tell SELinux that the web server is allowed to read and write content in this directory. This is the persistent method.  
+- Apply the Contexts: Run restorecon to apply the new SELinux policies to the files immediately.
 ```bash
 sudo semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/drupal(/.*)?"
 sudo restorecon -Rv /var/www/drupal/
 ```
-Tell SELinux that the web server is allowed to read and write content in this directory. This is the persistent method.  
-
-Apply the Contexts: Run restorecon to apply the new SELinux policies to the files immediately.
-
-Next edit the httpd apache file and map /drupal url path to Drupal Filesystem directory.
+- Next edit the httpd apache file and map /drupal url path to Drupal Filesystem directory.
 
 ```bash
 sudo nano /etc/httpd/conf.d/applications.conf
@@ -72,24 +70,24 @@ sudo nano /etc/httpd/conf.d/applications.conf
 
 ![applications-conf](./images/4/applications-conf.png)
 
-Next we go to .htaccess file and Modify Rewritebase
-Do this to access our Drupal app in /drupal url
+- Next we go to .htaccess file and Modify Rewritebase
+- Do this to access our Drupal app in /drupal url
 ```bash
 sudo nano /var/www/drupal/web/.htaccess
 ```
 ![7](./images/3/7.png)
 
 Then go to http://139.59.20.222/drupal/  
-Proceed to install Drupal
+- Proceed to install Drupal
 
 ![8](./images/3/8.png)
 
-In Database configuration we give drupal access to our Mariadb database  
-Provide it username and password of Database we creared
+- In Database configuration we give drupal access to our Mariadb database  
+- Provide it username and password of Database we creared
 
 ![9](./images/3/9.png)
 
-Once Drupal is installed we login with our maintainance account  
+- Once Drupal is installed we login with our maintainance account  
 (in this case its admin account)
 
 ![10](./images/3/10.png)
@@ -98,26 +96,26 @@ Once Drupal is installed we login with our maintainance account
 
 ## 2. Integrating with Keycloak SSO
 
-Go to manage > extend > we check Keycloak and install Keycloak Openid Connect
+- Go to manage > extend > we check Keycloak and install Keycloak Openid Connect
 
 ![11](./images/3/11.png)
 
-Visit our keycloak administration console  
-Then we create a new client - Drupal
+- Visit our keycloak administration console  
+- Then we create a new client - Drupal
 
 ![12](./images/3/12.png)
 
-Create another user than admin, called testuser  
-Testuser's credentials will be used for keycloak SSO 
+- Create another user than admin, called testuser  
+- Testuser's credentials will be used for keycloak SSO 
 
 ![13](./images/3/13.png)
 
-Go back to our drupal console  
-Go to configurations > people > openid-connect > then we add our Keycloak  client here  
+- Go back to our drupal console  
+- Go to configurations > people > openid-connect > then we add our Keycloak client here  
 
 ![14](./images/3/14.png)
 
-When we use SSO with keycloak
+- Then we use SSO with keycloak
 
 1. The OpenID Connect module on your Drupal site redirects the user's browser to Keycloak to log in.
 
@@ -137,12 +135,12 @@ First click Log in with Keycloak at http://139.59.20.222/drupal/user/login
 
 ![15](./images/3/15.png)
 
-The page is redirected to Keycloak login page  
+- The page is redirected to Keycloak login page  
 Put in our testuser credentials
 
 ![16](./images/3/16.png)
 
-Click Sign in the page and it logs us into Drupal using our keycloak client 
+- Click Sign in the page and it logs us into Drupal using our keycloak client 
 
 ![17](./images/3/17.png)
 

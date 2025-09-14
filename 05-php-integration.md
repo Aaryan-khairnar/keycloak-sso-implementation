@@ -9,8 +9,8 @@ PHP APPLICATION: http://139.59.20.222/php/
 
 ---
 ## 1. PHP Installation
-First, we'll create a dedicated directory for your new PHP application's files.
-Install the PHP OIDC Library
+- First, we'll create a dedicated directory for your new PHP application's files.
+- Install the PHP OIDC Library
 ```bash
     sudo mkdir /var/www/phpapp
     sudo composer require jumbojett/openid-connect-php
@@ -18,19 +18,15 @@ Install the PHP OIDC Library
 
 ![0](./images/5/0.png)
 
-Create the following files:
+- Create the following files:
 
 1. index.php
 
 ```bash
     sudo nano /var/www/phpapp/index.php
 ```
-
-- Acts as the main entry point: This is the first page users see.
-
-- Checks login status: It checks the PHP session to see if a user is already logged in.
-
-- Displays conditional content: If the user is logged in, it shows a welcome message and links to their profile and logout. If not, it provides a link to log in with Keycloak.
+- Acts as the main entry point
+- It checks the PHP session to see if a user is already logged in.
 
 ![1](./images/5/1.png)
 
@@ -39,14 +35,9 @@ Create the following files:
 ```bash
     sudo nano /var/www/phpapp/login.php
 ```
-
-- Initiates authentication: Its sole purpose is to start the login process.
-
-- Configures the OIDC client: It sets up the OpenID Connect client with your Keycloak server's details.
-
-- Redirects to Keycloak: It forwards the user's browser to the Keycloak login page to enter their credentials.
+- Initiates authentication
+- Redirects to Keycloak
   
-
 ![2](./images/5/2.png)
 
 3. callback.php
@@ -54,14 +45,9 @@ Create the following files:
 ```bash
     sudo nano /var/www/phpapp/callback.php
 ```
-
-- Receives data from Keycloak: After a successful login, Keycloak redirects the user back to this file with an authorization code.
-
-- Authenticates the user: It securely exchanges the code and your client secret for user tokens and information.
-
-- Establishes a local session: It stores the user's information in a PHP session, officially logging them into the application.
-
-- Redirects to a protected page: It sends the now-authenticated user to their profile page.
+- Receives data from Keycloak
+- Authenticates the user
+- Establishes a local session
 
 ![3](./images/5/3.png)
 
@@ -70,16 +56,12 @@ Create the following files:
 ```bash
     sudo nano /var/www/phpapp/logout.php
 ```
-
-- Destroys the local session: It logs the user out of the PHP application by clearing their session data.
-
-- Initiates a global logout: It redirects the user to Keycloak's logout URL to terminate the central SSO session.
-
-- Redirects to the homepage: After the logout process is complete, it sends the user back to the main index.php page.  
+- Initiates a global logout
+- Redirects to the homepage 
 
 ![4](./images/5/4.png)
 
-Next- Edit applications.conf of Httpd service
+- Next- Edit applications.conf of Httpd service
 
 ![applications-conf](./images/4/applications-conf.png)
 
