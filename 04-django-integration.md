@@ -113,7 +113,7 @@ return render(request, 'home.html', {'user_info': user_info})
 
 Next we edit /etc/httpd/conf.d/applications.conf
 
-![8](./images/4/8.png)
+![applications-conf](./images/4/applications-conf.png)
 
 We make a templates directory and code out a home and a login HTML page
 
