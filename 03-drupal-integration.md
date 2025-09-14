@@ -70,7 +70,7 @@ sudo nano /etc/httpd/conf.d/applications.conf
 # same file can be used to map /django and /phpapp url paths
 ```
 
-![6](./images/3/6.png)
+![applications-conf](./images/4/applications-conf.png)
 
 Next we go to .htaccess file and Modify Rewritebase
 Do this to access our Drupal app in /drupal url

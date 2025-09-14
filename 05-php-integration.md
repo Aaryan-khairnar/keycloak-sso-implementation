@@ -18,7 +18,7 @@ Install the PHP OIDC Library
 
 ![0](./images/5/0.png)
 
-Once installed we must create the following files:
+Create the following files:
 
 1. index.php
 
@@ -78,6 +78,10 @@ Once installed we must create the following files:
 - Redirects to the homepage: After the logout process is complete, it sends the user back to the main index.php page.  
 
 ![4](./images/5/4.png)
+
+Next- Edit applications.conf of Httpd service
+
+![applications-conf](./images/4/applications-conf.png)
 
 ---
 
