@@ -60,3 +60,11 @@
       * Drupal
       * Django (with Gunicorn)
       * PHP
+
+## Other Features 
+
+* Open User Registration: 
+
+To fully demonstrate the SSO workflow, the Keycloak master realm has been configured to permit self-service user registration. 
+
+This feature allows public users to create their own accounts, which can then be used to authenticate against the integrated Drupal, Django, and PHP applications. (Only until the Digitalocean droplet is alive and running)
