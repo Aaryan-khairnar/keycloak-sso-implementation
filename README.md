@@ -1,4 +1,11 @@
-This repository documents my implementation of the SSO project with Keycloak with 3 web apps. All setup steps, configurations, and screenshots are included.
+This project demonstrates a complete Single Sign-On (SSO) environment using Keycloak as the Identity Provider, integrated with three different web applications: Drupal, Django, and a custom PHP app. All setup steps, configurations, and screenshots are included.  
+
+The goal of this implementation is to provide a reproducible, end-to-end setup guide that shows how multiple applications—built with different tech stacks—can share a centralized authentication system.  
+
+Key highlights:
+* The environment was deployed on a DigitalOcean droplet, accessed via SSH, where the base server setup and subsequent application integrations were carried out.  
+* SSO Integration: All apps configured to use OpenID Connect with Keycloak.  
+* Open User Registration: Configured to allow account creation and login across all integrated apps.    
 
 -----
 
@@ -55,13 +62,13 @@ This repository documents my implementation of the SSO project with Keycloak wit
 ## Technology Stack
 
   * **Operating System**: Rocky Linux 10
-  * **Identity & Access Management**: Keycloak
+  * **Identity & Access Management**: Keycloak (With production-grade setup: reverse proxy, SSL, MariaDB backend, systemd service)
   * **Web Server**: Apache (httpd)
   * **Database**: MariaDB
   * **Applications**:
       * Drupal
       * Django (with Gunicorn)
-      * PHP
+      * PHP  
 
 ## Other Features 
 
