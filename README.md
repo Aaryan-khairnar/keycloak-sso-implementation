@@ -5,7 +5,9 @@ The goal of this implementation is to provide a reproducible, end-to-end setup g
 Key highlights:
 * The environment was deployed on a DigitalOcean droplet, accessed via SSH, where the base server setup and subsequent application integrations were carried out.  
 * SSO Integration: All apps configured to use OpenID Connect with Keycloak.  
-* Open User Registration: Configured to allow account creation and login across all integrated apps.    
+* Open User Registration: Configured to allow account creation and login across all integrated apps.  
+  
+Demonstration Video: A walkthrough of the complete setup and SSO workflow is on [YouTube](https://www.youtube.com/watch?v=8mhyXKXdd1k)
 
 -----
 
