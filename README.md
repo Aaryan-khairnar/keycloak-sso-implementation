@@ -1,4 +1,4 @@
-[NOTE]: This repository documents my implementation of the SSO internship task provided by FOSSEE Semester Long Internship [System Administrator Task](https://github.com/FOSSEE/System.Administration.Intern.Task.2025/tree/main). All setup steps, configurations, and screenshots are included.
+This repository documents my implementation of the SSO project with Keycloak with 3 web apps. All setup steps, configurations, and screenshots are included.
 
 -----
 
@@ -12,6 +12,8 @@
 | **Drupal** | http://139.59.20.222/drupal/ | PHP, Composer, MariaDB |
 | **Django** | http://139.59.20.222/django/ | Python, Django, Gunicorn |
 | **PHP App** | http://139.59.20.222/php/ | PHP, Composer |
+
+[NOTE]: These links pointed to a temporary test server, which is no longer running. 
 
 ## Overview
 
