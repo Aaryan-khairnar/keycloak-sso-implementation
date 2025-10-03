@@ -24,11 +24,6 @@ Demonstration Video: A walkthrough of the complete setup and SSO workflow is on 
 
 [NOTE]: These links pointed to a temporary test server, which is no longer running. 
 
-## Overview
-
-* This repository provides a complete, step-by-step guide for setting up a full Single Sign-On (SSO) environment using Keycloak on a Rocky Linux 10 server.  
-* The documentation covers the entire process, from initial server configuration to integrating three different web applications: Drupal, Django, and a vanilla PHP application.
-
 ## Table of Contents
 
 1.  **[01-server-setup.md](https://github.com/Aaryan-khairnar/my-internship-tasks-FOSSEE/blob/main/01-server-setup.md)**
